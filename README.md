@@ -95,20 +95,20 @@ The chosen architecture is an encoder-decoder network, which is commonly used fo
 The input is a 256x256 RGB image with 3 color channels.
 
 2. Convolutional Layers (Encoder):
-Conv2d(3, 64, kernel_size=3, stride=1, padding=1) -> ReLU:
-- This layer applies 64 filters of size 3x3 with a stride of 1 and padding of 1, resulting in an output of the same spatial dimensions (256x256). The ReLU activation introduces non-linearity.
-Conv2d(64, 128, kernel_size=3, stride=2, padding=1) -> ReLU:
-- This layer applies 128 filters of size 3x3 with a stride of 2 and padding of 1, reducing the spatial dimensions by half (128x128). The ReLU activation follows.
-Conv2d(128, 256, kernel_size=3, stride=2, padding=1) -> ReLU:
-- This layer applies 256 filters of size 3x3 with a stride of 2 and padding of 1, further reducing the spatial dimensions by half (64x64). The ReLU activation follows.
+- Conv2d(3, 64, kernel_size=3, stride=1, padding=1) -> ReLU:
+This layer applies 64 filters of size 3x3 with a stride of 1 and padding of 1, resulting in an output of the same spatial dimensions (256x256). The ReLU activation introduces non-linearity.
+- Conv2d(64, 128, kernel_size=3, stride=2, padding=1) -> ReLU:
+This layer applies 128 filters of size 3x3 with a stride of 2 and padding of 1, reducing the spatial dimensions by half (128x128). The ReLU activation follows.
+- Conv2d(128, 256, kernel_size=3, stride=2, padding=1) -> ReLU:
+This layer applies 256 filters of size 3x3 with a stride of 2 and padding of 1, further reducing the spatial dimensions by half (64x64). The ReLU activation follows.
 
 3. Transposed Convolutional Layers (Decoder):
-ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1) -> ReLU:
-- This layer applies 128 transposed filters of size 3x3 with a stride of 2, padding of 1, and output padding of 1, increasing the spatial dimensions to 128x128. The ReLU activation follows.
-ConvTranspose2d(128, 64, kernel_size=3, stride=2, padding=1, output_padding=1) -> ReLU:
-- This layer applies 64 transposed filters of size 3x3 with a stride of 2, padding of 1, and output padding of 1, increasing the spatial dimensions to 256x256. The ReLU activation follows.
-ConvTranspose2d(64, 3, kernel_size=3, stride=1, padding=1) -> Tanh:
-- This layer applies 3 transposed filters of size 3x3 with a stride of 1 and padding of 1, resulting in an output image of the same spatial dimensions (256x256). The Tanh activation ensures the output pixel values are in the range [-1, 1], which is suitable for image data.
+- ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1) -> ReLU:
+This layer applies 128 transposed filters of size 3x3 with a stride of 2, padding of 1, and output padding of 1, increasing the spatial dimensions to 128x128. The ReLU activation follows.
+- ConvTranspose2d(128, 64, kernel_size=3, stride=2, padding=1, output_padding=1) -> ReLU:
+This layer applies 64 transposed filters of size 3x3 with a stride of 2, padding of 1, and output padding of 1, increasing the spatial dimensions to 256x256. The ReLU activation follows.
+- ConvTranspose2d(64, 3, kernel_size=3, stride=1, padding=1) -> Tanh:
+This layer applies 3 transposed filters of size 3x3 with a stride of 1 and padding of 1, resulting in an output image of the same spatial dimensions (256x256). The Tanh activation ensures the output pixel values are in the range [-1, 1], which is suitable for image data.
 
 ## Why This Architecture?
 Feature Extraction and Compression:
